@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "scripts": {
+    "workbook": "node scripts/build_workbook.mjs"
+  }
+}
+

@@ -1,0 +1,15 @@
+.DS_Store
+.venv/
+node_modules
+__pycache__/
+*.py[cod]
+.pytest_cache/
+data/raw/*.jsonl
+data/normalized/*.csv
+reports/*.csv
+reports/*.xlsx
+reports/*.png
+reports/*.ndjson
+!data/raw/.gitkeep
+!data/normalized/.gitkeep
+!reports/.gitkeep

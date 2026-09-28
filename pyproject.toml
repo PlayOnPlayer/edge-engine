@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "edge-engine"
+version = "0.1.0"
+description = "Read-only Polymarket US recorder and realistic paper-trading laboratory"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "Proprietary" }
+
+[project.scripts]
+edge-engine = "edge_engine.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["edge_engine*"]
