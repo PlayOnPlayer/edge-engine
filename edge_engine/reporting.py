@@ -9,9 +9,9 @@ from edge_engine.models import PaperTrade
 from edge_engine.storage import TRADE_FIELDS, append_csv, read_csv, write_csv
 
 
-def record_trades(trades: list[PaperTrade]) -> None:
+def record_trades(trades: list[PaperTrade], path: str | Path = "reports/paper_trades.csv") -> None:
     for trade in trades:
-        append_csv("reports/paper_trades.csv", trade.to_row(), TRADE_FIELDS)
+        append_csv(path, trade.to_row(), TRADE_FIELDS)
 
 
 def _float(row: dict[str, str], key: str) -> float:
@@ -31,7 +31,12 @@ def _max_drawdown(profits: list[float]) -> float:
     return drawdown
 
 
-def summarize(path: str | Path = "reports/paper_trades.csv") -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+def summarize(
+    path: str | Path = "reports/paper_trades.csv",
+    *,
+    output_dir: str | Path = "reports",
+    output_prefix: str = "",
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     rows = read_csv(path)
     by_strategy: dict[str, list[dict[str, str]]] = defaultdict(list)
     by_day: dict[tuple[str, str], list[dict[str, str]]] = defaultdict(list)
@@ -70,12 +75,12 @@ def summarize(path: str | Path = "reports/paper_trades.csv") -> tuple[list[dict[
             "orphans": sum(item.get("exit_type") != "MERGE" for item in items),
         })
 
-    write_csv("reports/strategy_comparison.csv", comparison, [
+    output_dir = Path(output_dir)
+    write_csv(output_dir / f"{output_prefix}strategy_comparison.csv", comparison, [
         "strategy", "trades", "completed_pairs", "pair_completion_pct", "orphans", "gross_profit",
         "fees", "maker_rebates", "net_profit", "max_drawdown", "profit_per_1000_volume", "avg_net_per_trade",
     ])
-    write_csv("reports/daily_summary.csv", daily, [
+    write_csv(output_dir / f"{output_prefix}daily_summary.csv", daily, [
         "date", "strategy", "trades", "net_profit", "fees", "maker_rebates", "completed_pairs", "orphans",
     ])
     return comparison, daily
-

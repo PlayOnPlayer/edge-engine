@@ -20,7 +20,7 @@ The V1 laboratory is implemented and verified offline:
 - deterministic replay
 - CSV summaries and a formatted review workbook
 
-Production collection is intentionally gated. The September 21 Polymarket US changelog says automated 15-minute and 60-minute BTC Up/Down markets are in pre-production and will reach production on a schedule announced in the changelog. A live production query on September 28 returned no markets with the required typed `assetPriceTerms` fields.
+Production collection is intentionally gated. The September 21 Polymarket US changelog describes automated 15-minute and 60-minute BTC Up/Down markets as a staged rollout. The free forward probe observed one matching production market on September 29, but availability may change while rollout continues. Discovery remains a hard gate.
 
 ## Stage 1 — Production launch watcher
 
@@ -112,4 +112,3 @@ If these conditions fail, stop or revise the hypothesis. Paper profitability alo
 - https://docs.polymarket.us/faqs/crypto-faqs
 - https://docs.polymarket.us/fees
 - https://docs.cdp.coinbase.com/api-reference/exchange-api/rest-api/products/get-product-trades
-

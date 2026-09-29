@@ -124,7 +124,7 @@ dashboard.getRange("A14:H18").values = [
   ["Data mode", "DEMO rows prove the pipeline. REST_POLL rows come from live public endpoints.", null, null, null, null, null, null],
   ["Fill model", "REALISTIC_TRADE_THROUGH requires the observed last trade to move through a resting quote.", null, null, null, null, null, null],
   ["Current limit", "BBO polling cannot measure queue position, partial fills, or depth-sensitive exit differences.", null, null, null, null, null, null],
-  ["Launch status", "The target BTC 15-minute family is documented in pre-production but was not present on the production API on September 28, 2026.", null, null, null, null, null, null],
+  ["Launch status", "The free forward probe observed one production BTC 15-minute market on September 29, 2026; availability remains subject to staged rollout.", null, null, null, null, null, null],
 ];
 dashboard.getRange("A14:H14").merge();
 dashboard.getRange("A14").format = { fill: "#E8EDF5", font: { name: fontFamily, bold: true, color: "#23324D" } };
@@ -216,7 +216,7 @@ notes.getRange("A6:C16").values = [
   ["External BTC", "Latest Coinbase BTC-USD public trade", "https://docs.cdp.coinbase.com/api-reference/exchange-api/rest-api/products/get-product-trades"],
   ["Fill assumption", "Strict observed trade-through; full quantity; no partial fills", "Research assumption E001"],
   ["US market structure", "YES and NO are complementary directions of one instrument; BBO-only smart exits are economically equivalent before depth effects", "https://docs.polymarket.us/concepts/orders"],
-  ["Production status", "Automated BTC 15-minute markets are documented ahead of production listing and remain pre-production until announced", "https://docs.polymarket.us/changelog"],
+  ["Production status", "The changelog describes a staged rollout; this project observed one matching production market during the free probe and keeps discovery as a hard gate", "https://docs.polymarket.us/changelog"],
 ];
 styleHeader(notes.getRange("A6:C6"));
 notes.getRange("A7:C16").format.wrapText = true;
